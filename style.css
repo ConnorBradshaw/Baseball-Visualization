@@ -1,0 +1,33 @@
+html
+{
+	font-family: arial;
+	padding: 0;
+	margin: 0;
+}
+body
+{
+	background: #F9F9FA;
+	padding-left: 30px;
+	margin: 0;
+}
+h1
+{
+	text-align: center;
+}
+.title
+{
+
+	display: block;
+	text-align: center;
+	position: relative;
+	font-size: 30px;
+}
+.float
+{
+	padding-left: 10px;
+	float: left;
+}
+.sample
+{
+	border: 1px black;
+}
