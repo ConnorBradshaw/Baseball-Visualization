@@ -49,6 +49,9 @@ d3.csv("BattedBallData.csv", function(d){
 	ball[count].outcome = d[count].PLAY_OUTCOME,
 	ball[count].video = d[count].VIDEO_LINK
 }
+ball.sort(function(x, y){
+   return d3.ascending(x.batter, y.batter);
+})
 for(var p = 0; p < ball.length; p++)
 {
 
@@ -83,7 +86,7 @@ for(var p = 0; p < ball.length; p++)
 			.append("svg:image")
 			.attr('width', 600)
 			.attr('height', 468)
-			.attr("xlink:href", "baseballfield.png");
+			.attr("xlink:href", "baseball.png");
 			
 		}
 		theta = (angle * 1 + 90) * (Math.PI / 180);
@@ -92,9 +95,9 @@ for(var p = 0; p < ball.length; p++)
 		.attr("id", ".test_div" + i)
 		.attr("stroke", "black")
 		.attr("x1", 300)
-		.attr("y1", 400)
-		.attr("x2", 300 + distance * -Math.cos(theta))
-		.attr("y2", 400 + distance * -Math.sin(theta))
+		.attr("y1", 340)
+		.attr("x2", 300 + (distance * .65) * -Math.cos(theta))
+		.attr("y2", 340 + (distance * .65) * -Math.sin(theta))
 		.attr("stroke-width", 2.5)
 		.attr("stroke-opacity", .7)
 		.on("mouseover", function(){return tooltip.style("visibility", "visible"), tooltip.html("Outcome: " + outcome + "<br/> Distance: " + distance + " ft<br/> Velocity: " + velocity + " mph"), d3.select(this).attr("stroke-width", 4), d3.select(this).attr("stroke","white");  })
@@ -113,6 +116,7 @@ for(var p = 0; p < ball.length; p++)
 });
 var tooltip = d3.select("body")
 	.append("div")
+	.attr("class", "border")
 	.style("position", "absolute")
 	.style("font-size", "20px")
 	.style("background", "white")
