@@ -12,7 +12,7 @@ function Hits(date, velocity, angle, distance, outcome, video)
 	this.outcome = outcome;
 	this.video = video;
 }
-function bats(batterID, batter, pitcherID, pitcher, date, launchAngle, velocity, angle, distance, hangTime, spinRate, outcome, video)
+function bats(batterID, batter, lastName, pitcherID, pitcher, date, launchAngle, velocity, angle, distance, hangTime, spinRate, outcome, video)
 {
 	this.batterID = batterID;
 	this.batter = batter;
@@ -112,11 +112,12 @@ d3.csv("BattedBallData.csv", function(d)
 		ball[count].outcome = d[count].PLAY_OUTCOME,
 		ball[count].video = d[count].VIDEO_LINK
 		var temp = ball[count].batter.split(",");
+		ball[count].lastName = temp[0];
 		ball[count].batter = temp[1] + " " + temp[0];
 	}
 	ball.sort(function(x, y)
 	{
-	   return d3.ascending(x.batter, y.batter);
+	   return d3.ascending(x.lastName, y.lastName);
 	})
 	function createChart(name)
 	{
